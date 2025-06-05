@@ -42,7 +42,26 @@
 <body>
     <canvas id="game-canvas" width="600" height="400"></canvas>
     <div class="button-row">
-        <button id="start-btn">Start</button>
+        <button id="start-btn" onclick="createNewCanvas()">Start</button>
+        <script>
+            function createNewCanvas() {
+            // Check if a new canvas already exists
+            if (document.getElementById('extra-canvas')) return;
+            // Hide the main interface
+            document.getElementById('game-canvas').style.display = 'none';
+            document.querySelector('.button-row').style.display = 'none';
+            // Create and show the new canvas
+            const newCanvas = document.createElement('canvas');
+            newCanvas.id = 'extra-canvas';
+            newCanvas.width = 400;
+            newCanvas.height = 300;
+            newCanvas.style.background = '#333';
+            newCanvas.style.border = '2px solid #888';
+            newCanvas.style.display = 'block';
+            newCanvas.style.marginTop = '20px';
+            document.body.appendChild(newCanvas);
+            }
+        </script>
         <button id="pause-btn">Pause</button>
         <button id="reset-btn">Reset</button>
     </div>
